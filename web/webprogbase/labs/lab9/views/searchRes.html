@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>List of cool songs</title>
+    <meta name="description" content="kinda list of some songs">
+    <meta name="author" content="TGIfr aka RuntimeJunky">
+    <link type="text/css" href="/stylesheets/style.css" rel="stylesheet"/>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/mustache.js/2.2.1/mustache.min.js'></script>
+    <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+    <script
+            src="https://code.jquery.com/jquery-3.2.1.min.js"
+            integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+            crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+</head>
+<body>
+<% include partials/header %>
+<input type="hidden" id="usernameHolder" >
+<input type="hidden" id="hashHolder" >
+<script>
+
+    let username = "<%= user.username%>" ;
+    let password = "<%= user.passwordHash%>";
+    $('usernameHolder').value = username;
+    $('hashHolder').value = password;
+
+</script>
+
+
+<script id="my-list-template" type="x-tmpl-mustache">
+	<div id='filteredSongs'>
+    <div v-if="filteredSongs.length">
+
+        <div>
+            <ul id='songs-list' class="list-group">
+                <li v-for="song in filteredSongs" class="list-group-item">
+                    <a href="song/{{_id}}"><b>{{name}}</b></a>
+                    <span class='user-id'>(id: {{_id}})</span>
+                    <span class='float-right'><a href='#' :song_id="song._id" v-on:click="removeSong" >remove</a></span>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <h3 v-if="!filteredSongs.length">No songs found</h3>
+
+</div>
+
+</script>
+
+<div id='songs' class='container'>
+    <div class='page-header'>
+        <h1>Songs</h1>
+    </div>
+    <div class='row'>
+        <div class='col-md-8'>
+            <div>
+                <input type="hidden" id="searchHolder" value ="<%= search%>" >
+                <div class="form-group">
+
+                    <input type="text" id='test' v-model="nameFilterSaved" name="nameFilter" value = "<%= search%>" >
+                    <input type="submit" class="btn btn-info" v-on:click="searchSongs" value="Search">
+                    <!--<input type="text" class="btn btn-info" v-on:click="logSongs" value="log">-->
+
+                </div>
+                <hr/>
+                <div id='filteredSongs'>
+                        <div>
+                            <ul id='songs-list' class="list-group">
+                                <li v-for="song in filteredSongs" class="list-group-item">
+                                    <a :href="/song/ +  song._id"><b>{{song.name}}</b></a>
+                                    <span class='user-id'>(id: {{song._id}})</span>
+                                    <span class='float-right'><a href='#' :song_id="song._id" v-on:click="removeSong" >remove</a></span>
+
+                                </li>
+                            </ul>
+                        </div>
+
+                    <h3 v-if="!filteredSongs.length">No songs found</h3>
+                </div>
+                <hr/>
+            </div>
+
+        </div>
+        <div class='col-md-4'>
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title">Create new song:</h3>
+                </div>
+                <div class="panel-body">
+                    <form id='createSongForm'>
+                        <div class="form-group">
+                            <input id='newSongName'
+                                   class="form-control"
+                                   placeholder="New Song" required/><br>
+                            <input type="text" class="form-control" id="author" placeholder="author" required ><br>
+                            <input type="text" class="form-control" id="length" placeholder="length" required pattern="\d{1,5}"><br>
+                            <input type="text" class="form-control" id="inform" placeholder="information"><br>
+                            <input type="file" class="form-control" id="image" placeholder="image" required ><br>
+                        </div>
+                        <button v-on:click="createSong" type="submit"
+                                class="btn btn-primary">Create</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="/js/index.js"></script>
+<a href="/">Go back</a>
+
+
+</body>
+</html>

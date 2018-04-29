@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<teachers>
+  <teacher>
+    <name/>
+    <age>150</age>
+    <score>0.000000</score>
+    <book name="Middlearth">
+      <rating>1</rating>
+    </book>
+    <book name="Shaun of the Dead">
+      <rating>2</rating>
+    </book>
+  </teacher>
+</teachers>

@@ -1,0 +1,6 @@
+D:\my projects\c#\PAT_Lab3\PAT_Lab3\bin\Debug\PAT_Lab3.exe.config
+D:\my projects\c#\PAT_Lab3\PAT_Lab3\bin\Debug\PAT_Lab3.exe
+D:\my projects\c#\PAT_Lab3\PAT_Lab3\bin\Debug\PAT_Lab3.pdb
+D:\my projects\c#\PAT_Lab3\PAT_Lab3\obj\Debug\PAT_Lab3.csprojResolveAssemblyReference.cache
+D:\my projects\c#\PAT_Lab3\PAT_Lab3\obj\Debug\PAT_Lab3.exe
+D:\my projects\c#\PAT_Lab3\PAT_Lab3\obj\Debug\PAT_Lab3.pdb

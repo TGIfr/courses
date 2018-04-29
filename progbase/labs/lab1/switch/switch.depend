@@ -1,0 +1,7 @@
+# depslib dependency file v1.0
+1475168343 source:/home/tgifr/projects/c/progbase/labs/lab1/switch/main.c
+	<stdio.h>
+	<stdlib.h>
+	<progbase.h>
+	<math.h>
+

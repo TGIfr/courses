@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<libraryInfos>
+<libraryInfo home="D:\Games" version="1.8.0_102">
+<bootpath>
+<entry path="D:\Games\jre\lib\resources.jar"/>
+<entry path="D:\Games\jre\lib\rt.jar"/>
+<entry path="D:\Games\jre\lib\sunrsasign.jar"/>
+<entry path="D:\Games\jre\lib\jsse.jar"/>
+<entry path="D:\Games\jre\lib\jce.jar"/>
+<entry path="D:\Games\jre\lib\charsets.jar"/>
+<entry path="D:\Games\jre\lib\jfr.jar"/>
+<entry path="D:\Games\jre\classes"/>
+</bootpath>
+<extensionDirs>
+<entry path="D:\Games\jre\lib\ext"/>
+<entry path="C:\Windows\Sun\Java\lib\ext"/>
+</extensionDirs>
+<endorsedDirs>
+<entry path="D:\Games\jre\lib\endorsed"/>
+</endorsedDirs>
+</libraryInfo>
+</libraryInfos>

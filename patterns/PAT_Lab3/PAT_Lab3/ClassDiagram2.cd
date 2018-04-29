@@ -1,0 +1,46 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="PAT_Lab3.Card" Collapsed="true">
+    <Position X="3.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAABAAAAAAAAEAAAAAAAAAAAAAAAAAAAggAAAABA=</HashCode>
+      <FileName>Prototype.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PAT_Lab3.Hearts" Collapsed="true">
+    <Position X="5" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Prototype.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PAT_Lab3.Spades" Collapsed="true">
+    <Position X="0.5" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Prototype.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PAT_Lab3.Diamonds" Collapsed="true">
+    <Position X="2.75" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Prototype.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PAT_Lab3.Clubs" Collapsed="true">
+    <Position X="7.25" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Prototype.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Enum Name="PAT_Lab3.Values" Collapsed="true">
+    <Position X="9.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>gAAAAAAAAAAggAAAAAAEAIAAAAABBAAAAAAAAAAAAEE=</HashCode>
+      <FileName>Prototype.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

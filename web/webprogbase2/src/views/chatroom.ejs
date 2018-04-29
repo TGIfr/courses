@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html >
+  <head>
+    <meta charset="UTF-8">
+    <title>Guess It!</title>
+    <link rel="stylesheet" href="/stylesheets/style.css">
+    <link rel='stylesheet prefetch' href='https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css'>
+  </head>
+  <body>
+  <div class="container clearfix" id ="drawing" style=" float:left; width:550px; height:460px; margin: 0px">
+      <div class="controls" style="float:right; width: 50%;">
+          <body>
+          <div id="clearCanvas" class="rooms-btn">Clear</div>
+      </div>
+      <canvas class="whiteboard" ></canvas>
+
+      <div class="colors">
+          <div class="color black"></div>
+          <div class="color red"></div>
+          <div class="color green"></div>
+          <div class="color blue"></div>
+          <div class="color yellow"></div>
+          <div class="color white"></div>
+      </div>
+  </div>
+    <div class="container clearfix">
+
+      <div class="chat">
+        <div class="chat-header clearfix">
+          <img src="<%= user.picture %>" alt="avatar">
+          <div class="chat-about">
+            <div class="chat-room"><%= room.title %></div>
+              <input hidden id="roomCreatorHolder" value="<%= room.creator %>">
+            <div class="chat-num-users"> User(s)</div>
+          </div>
+          <i class="fa fa-users"></i>
+        </div> <!-- end chat-header -->
+        
+        <div class="chat-history">
+          <ul>
+          </ul>
+        </div> <!-- end chat-history -->
+        
+        <div class="chat-message clearfix">
+          <textarea name="message" placeholder ="Type your message" rows="3"></textarea> 
+          <button type="submit">Send</button>
+        </div> <!-- end chat-message -->
+      </div> <!-- end chat -->
+      
+      <div class="controls">
+          <a href="/profile" class="profile-btn" style="width: 33%; ">Profile</a>
+          <a href="/logout" class="logout-btn" style="width: 33%; ">Logout</a>
+          <a href="/createroom" class="rooms-btn" style="width: 34%; ">Rooms</a>
+      </div>
+
+      <div class="users-list">
+        <ul class="list">
+        </ul>
+      </div>
+    </div> <!-- end container -->
+    <script src='https://code.jquery.com/jquery-3.2.1.min.js'></script>
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="/js/main.js"></script>
+    <script>$(document).ready($(function(){app.chat('<%= room.id %>', '<%= user.username %>')}));</script>
+  </body>
+</html>

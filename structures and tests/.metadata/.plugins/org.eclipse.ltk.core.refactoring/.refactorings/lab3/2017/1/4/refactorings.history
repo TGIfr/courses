@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Copy element &apos;SLNode.java&apos; to &apos;kr_1/src/kr_task2&apos;&#x0D;&#x0A;- Original project: &apos;lab3&apos;&#x0D;&#x0A;- Destination element: &apos;kr_1/src/kr_task2&apos;&#x0D;&#x0A;- Original element: &apos;lab3.SLNode.java&apos;" description="Copy compilation unit" destination="=kr_1/src&lt;kr_task2" element1="/lab3&lt;lab3{SLNode.java" files="0" flags="589830" folders="0" id="org.eclipse.jdt.ui.copy" policy="org.eclipse.jdt.ui.copyResources" stamp="1484903715824" units="1" version="1.0"/>
+</session>

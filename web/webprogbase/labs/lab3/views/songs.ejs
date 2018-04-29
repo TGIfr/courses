@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>List of cool songs</title>
+    <meta name="description" content="kinda list of some songs">
+    <meta name="author" content="TGIfr aka RuntimeJunky">
+    <link type="text/css" href="/stylesheets/style.css" rel="stylesheet"/>
+</head>
+<body>
+<div class="song-content">
+    <h1>The list</h1>
+</div>
+
+<table id="list">
+    <tr>
+        <% for (let song of songArr) { %>
+        <td><img src=<%= song.img %> > </td>
+            <% } %>
+    </tr>
+    <tr id = "songNames">
+        <% for (let song of songArr) { %>
+        <td>
+            <a href="<%= "song/" + song.id %>" > <%= song.name %> </a>
+
+        </td>
+        <% } %>
+    </tr>
+</table>
+
+<a href="/">Go back</a>
+
+
+</body>
+</html>

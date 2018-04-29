@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Just some cool songs</title>
+    <meta name="description" content="kinda list of some songs">
+    <meta name="author" content="TGIfr aka RuntimeJunky">
+    <link type="text/css" href="/stylesheets/style.css" rel="stylesheet"/>
+</head>
+<body>
+<div class = "song-content">
+    <h1><%=  song.author %></h1>
+    <p><%=  song.name %></p>
+    <img src=<%= song.img %> >
+
+    <hr/>
+    <p><%=  song.info %></p>
+    <p>Length is <%=  song.length %> seconds</p>
+</div>
+<a href="/songs">Go back</a>
+
+</body>
+</html>

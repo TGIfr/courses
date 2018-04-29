@@ -1,0 +1,3 @@
+/home/tgifr/projects/c/progbase2/tcp_client/CMakeFiles/edit_cache.dir
+/home/tgifr/projects/c/progbase2/tcp_client/CMakeFiles/rebuild_cache.dir
+/home/tgifr/projects/c/progbase2/tcp_client/CMakeFiles/server.dir

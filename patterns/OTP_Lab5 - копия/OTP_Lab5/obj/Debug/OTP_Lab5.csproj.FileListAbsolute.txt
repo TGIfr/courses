@@ -1,0 +1,9 @@
+D:\my projects\c#\OTP_Lab5\OTP_Lab5\bin\Debug\OTP_Lab5.exe.config
+D:\my projects\c#\OTP_Lab5\OTP_Lab5\bin\Debug\OTP_Lab5.exe
+D:\my projects\c#\OTP_Lab5\OTP_Lab5\bin\Debug\OTP_Lab5.pdb
+D:\my projects\c#\OTP_Lab5\OTP_Lab5\obj\Debug\OTP_Lab5.csprojResolveAssemblyReference.cache
+D:\my projects\c#\OTP_Lab5\OTP_Lab5\obj\Debug\OTP_Lab5.exe
+D:\my projects\c#\OTP_Lab5\OTP_Lab5\obj\Debug\OTP_Lab5.pdb
+D:\my projects\c#\OTP_Lab5 - копия\OTP_Lab5\bin\Debug\OTP_Lab5.exe.config
+D:\my projects\c#\OTP_Lab5 - копия\OTP_Lab5\obj\Debug\OTP_Lab5.exe
+D:\my projects\c#\OTP_Lab5 - копия\OTP_Lab5\obj\Debug\OTP_Lab5.pdb

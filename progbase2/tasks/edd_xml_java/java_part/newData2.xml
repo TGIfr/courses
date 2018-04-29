@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<teacher>
+  <name>vasya</name>
+  <age>105284</age>
+  <score>150.000000</score>
+  <books>
+    <book name="trats">
+      <rating>2</rating>
+    </book>
+    <book name="midgard">
+      <rating>2</rating>
+    </book>
+  </books>
+</teacher>

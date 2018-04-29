@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>List of cool songs</title>
+    <meta name="description" content="kinda list of some songs">
+    <meta name="author" content="TGIfr aka RuntimeJunky">
+    <link type="text/css" href="/stylesheets/style.css" rel="stylesheet"/>
+    <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+</head>
+<body>
+<% include partials/header %>
+<div class="search-content">
+    <h1>The list</h1>
+    <form action="/search/1" method="get" >
+        <input type="text" name="name"  value = "<%= search%>">
+        <input type="submit" value="Find">
+    </form>
+    <br>
+</div>
+
+<table id="list">
+    <tr>
+        <% for (let song of part) { %>
+        <td><img src=<%= song.img %> > </td>
+        <% } %>
+    </tr>
+    <tr id = "songNames">
+        <% for (let song of part) { %>
+        <td>
+            <a href="<%= "/song/" + song.id %>" > <%= song.name %> </a>
+
+        </td>
+        <% }   %>
+    </tr>
+</table>
+
+<% if (pages > 0) { %>
+<ul class="pagination text-center">
+    <% if (curPage == 1) { %>
+        <li class="disabled"><a>First</a></li>
+    <% } else { %>
+        <li><a href="/search/1?name=<%= search %>">First</a></li>
+    <% } %>
+    <% let i = (Number(curPage) > 5 ? Number(curPage) - 4 : 1) %>
+    <% if (i !== 1) { %>
+        <li class="disabled"><a>...</a></li>
+    <% } %>
+    <% for (; i <= (Number(curPage) + 4) && i <= pages; i++) { %>
+        <% if (i == curPage) { %>
+            <li class="active"><a><%= i%></a></li>
+        <% } else { %>
+            <li><a href="/search/<%= i  + "?name=" + search%>"><%= i%></a></li>
+        <% } %>
+        <% if (i == Number(curPage) + 4 && i < pages) { %>
+            <li class="disabled"><a>...</a></li>
+        <% } %>
+    <% } %>
+    <% if (curPage == pages) { %>
+        <li class="disabled"><a>Last</a></li>
+    <% } else { %>
+        <li><a href="/search/<%= pages +  "?name=" + search  %>"> Last</a></li>
+    <% } %>
+</ul>
+<% } %>
+<a href="/">Go back</a>
+
+
+</body>
+</html>

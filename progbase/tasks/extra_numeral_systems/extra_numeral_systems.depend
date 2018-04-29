@@ -1,0 +1,8 @@
+# depslib dependency file v1.0
+1475010585 source:/home/tgifr/projects/c/progbase/tasks/extra_numeral_systems/main.c
+	<stdio.h>
+	<progbase.h>
+	<math.h>
+	<string.h>
+	<stdbool.h>
+

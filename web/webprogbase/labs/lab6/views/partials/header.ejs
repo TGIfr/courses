@@ -1,0 +1,20 @@
+<nav class="navbar navbar-default">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="#">Scarring Gallo</a>
+        </div>
+        <ul class="nav navbar-nav">
+            <li ><a href="/">Home</a></li>
+            <% if (typeof user != 'undefined' && user) { %>
+            <li><a href='/profile'><b><%= user.username %></b></a></li>
+            <li><a href='/logout'>Logout</a></li>
+            <% if(user.role == 'admin') {%>
+            <li><a href='/admin'>Admin</a></li>
+            <% } %>
+            <% } else { %>
+            <li><a href='/register'>Register</a></li>
+            <li><a href='/login'>Login</a></li>
+            <% } %>
+        </ul>
+    </div>
+</nav>

@@ -1,0 +1,17 @@
+10.25 0 25 485
+2 2 2 2 2 //must be zero
+-1248454 -51454515  -154541548 //must be zero
+ //must be zero
+ 454t5b 5rgb 5654 TR 5g
+ b 54
+ r //must be zero
+  r //must be zero
+   46
+   hg4
+   b 6
+   54
+   6
+45.5
+65.8
+10 10 10
+2 2 2 2 2 2 //must be zero

@@ -1,0 +1,6 @@
+# depslib dependency file v1.0
+1476988063 source:/home/tgifr/projects/c/progbase/test/console_test/main.c
+	<progbase.h>
+	<pbconsole.h>
+	<stdio.h>
+

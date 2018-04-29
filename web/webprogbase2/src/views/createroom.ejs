@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html >
+  <head>
+    <meta charset="UTF-8">
+    <title>Guess It!</title>
+    <link rel="stylesheet" href="/stylesheets/style.css">
+    <link rel='stylesheet prefetch' href='https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css'>
+  </head>
+  <body>
+    <div class="container clearfix" style="width: 500px;">
+      <div class="controls" style="border: none; width: 100%;">
+          <a href="/profile" class="profile-btn" style="width: auto; padding: 13px; font-size: 12px;">Profile</a>
+          <a href="/logout" class="logout-btn" style="width: auto; padding: 13px; font-size: 12px;">Logout</a>
+      </div>
+
+      <div class="room" style="width: 100%;">
+        <div class="room-header clearfix">
+          <div class="room-about">
+            <div class="room-title">Create new room</div>
+          </div>
+          <i class="fa fa-th-list"></i>
+        </div> <!-- end room-header -->
+        
+        <div class="room-create clearfix" style="border-bottom: 2px solid white;">
+          <form action="/createroom" class="login-form" method="post">
+            <input type="text" name="title" autofocus placeholder ="Type a new room">
+            <input type="hidden" name="creator" value="<%= user.username%>">
+            <button>Create</button>
+              <% if (errors != null ) { %>
+              <% errors.forEach(function(err){ %>
+            <p class="message error"><%= err %></p>
+              <% }); %>
+              <% } %>
+          </form>
+
+        </div> <!-- end room-create -->
+
+
+      </div> <!-- end room -->
+      <div class="controls" style="border: none; width: 100%;">
+        <a href="/chat/<%= mainRoomId%>" class="controls rooms-btn"
+        style="padding: 12px; float: left; width: auto;" >Main room</a>
+      </div>
+
+
+    </div> <!-- end container -->
+
+  </body>
+</html>

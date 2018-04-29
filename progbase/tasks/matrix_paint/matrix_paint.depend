@@ -1,0 +1,6 @@
+# depslib dependency file v1.0
+1476303208 source:/home/tgifr/projects/c/progbase/tasks/matrix_paint/main.c
+	<stdio.h>
+	<progbase.h>
+	<pbconsole.h>
+

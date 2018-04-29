@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Just some cool songs</title>
+    <meta name="description" content="kinda list of some songs">
+    <meta name="author" content="TGIfr aka RuntimeJunky">
+    <link type="text/css" href="/stylesheets/style.css" rel="stylesheet"/>
+</head>
+<body>
+<div class = "content">
+    <form action="/addSong" method="post" enctype="multipart/form-data">
+        <input type="text" name="name" placeholder="name"><br>
+        <input type="text" name="author" placeholder="author"><br>
+        <input type="text" name="length" placeholder="length"><br>
+        <input type="text" name="inform" placeholder="information"><br>
+        <input type="file" name="image" placeholder="image"><br>
+        <input type="submit" value="Submit">
+    </form>
+    <br>
+    <button onclick="window.location.href='/'">Get back</button>
+</div>
+
+</body>
+</html>

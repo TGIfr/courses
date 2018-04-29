@@ -1,0 +1,8 @@
+# depslib dependency file v1.0
+1475699133 source:/home/tgifr/projects/c/progbase/tasks/arrays/main.c
+	<stdio.h>
+	<stdlib.h>
+	<time.h>
+	<progbase.h>
+	<pbconsole.h>
+

@@ -1,0 +1,6 @@
+main.c
+r
+Cannot open file main.c\n
+output.txt
+w
+Cannot open file output.txt

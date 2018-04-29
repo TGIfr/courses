@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html >
+<head>
+    <meta charset="UTF-8">
+    <title>Guess It!</title>
+    <link rel="stylesheet" href="/stylesheets/style.css">
+    <link rel='stylesheet prefetch' href='https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css'>
+</head>
+<body>
+<div class="container clearfix" style="width: 500px;">
+    <div class="controls" style="border: none; width: 100%;">
+        <a href="/logout" class="logout-btn" style="width: auto; padding: 13px; font-size: 12px;">Logout</a>
+    </div>
+
+    <div class="room" style="width: 100%;">
+        <div class="room-header clearfix">
+            <div class="room-about">
+                <div class="room-title">Here is your room</div>
+            </div>
+            <div class="controls" style="border: none; width: 100%;">
+                <a href="/chat/<%= room.id%>">GO!</a>
+            </div>
+
+        </div> <!-- end room-header -->
+        <div>Send this link to your friends(if any) to join</div>
+        <div>
+            <input type="text" value="<%= url + room.id%>" style="width:100%;">
+        </div>
+    </div> <!-- end room -->
+
+
+</div> <!-- end container -->
+
+
+</body>
+</html>

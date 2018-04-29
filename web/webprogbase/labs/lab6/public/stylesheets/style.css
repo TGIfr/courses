@@ -1,0 +1,47 @@
+body {
+    background-size: contain;
+    background: url(/images/background.jpg) center;
+}
+
+hr {
+    width: 400px;
+}
+.content{
+    text-align: center;
+    color: white;
+    font-family: Lato;
+    padding-top: 15%;
+}
+.song-content{
+    text-align: center;
+    color: whitesmoke;
+    font-family: Lato;
+    padding-top: 8%;
+}
+.search-content{
+    text-align: center;
+    color: cornflowerblue;
+    font-family: Lato;
+    padding-top: 8%;
+}
+button{
+    border-radius: 15%;
+}
+#list{
+    font-family: Georgia;
+    color: white;
+
+    border-collapse: collapse;
+    border-spacing: 0;
+    text-align: center;
+    height: 100px;
+
+}
+#songNames{
+    border-spacing: 10px 10px;
+}
+
+#list,td,img{
+    height: 250px;
+    width: 250px;
+}

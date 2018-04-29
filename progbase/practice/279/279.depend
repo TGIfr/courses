@@ -1,0 +1,6 @@
+# depslib dependency file v1.0
+1475236866 source:/home/tgifr/projects/c/progbase/279/main.c
+	<stdio.h>
+	<stdlib.h>
+	<time.h>
+

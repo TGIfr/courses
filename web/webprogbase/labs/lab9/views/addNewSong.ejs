@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Just some cool songs</title>
+    <meta name="description" content="kinda list of some songs">
+    <meta name="author" content="TGIfr aka RuntimeJunky">
+    <link type="text/css" href="/stylesheets/style.css" rel="stylesheet"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+</head>
+<body>
+<% include partials/header %>
+<div class = "content">
+    <form action="/addSong" method="post" enctype="multipart/form-data">
+        <input type="text" name="name" placeholder="name" required ><br>
+        <input type="text" name="author" placeholder="author" required ><br>
+        <input type="text" name="length" placeholder="length" required pattern="[\d]"><br>
+        <input type="text" name="inform" placeholder="information"><br>
+        <input type="file" name="image" placeholder="image" required style="display:inline"><br>
+
+        <input type="submit" value="Submit">
+    </form>
+    <br>
+    <button onclick="window.location.href='/'">Get back</button>
+</div>
+
+</body>
+</html>

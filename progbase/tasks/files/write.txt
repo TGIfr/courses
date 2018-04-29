@@ -1,0 +1,15 @@
+Записати ті рядки, які стоять одразу перед кожним пустим рядком у тексті
+
+36   -5    8   30  -84  -91  -86  -20   35  -68
+ 88   87  -25   11    7   72   84
+Suppression of the glee, that purs’d and scor’d
+In literary theory, a text is
+ s object is a work of literature, a street sign, an arrangement of buil
+
+
+ dings on a city block, or styles of clothing. It is a coherent set of
+
+ signs that transmits some kind of informative message.[1] This set of symbols is consi
+
+  he medium in which it is represented.
+physical representation of text).

@@ -1,0 +1,306 @@
+<html>
+<head>
+<title>test</title>
+<style type="text/css" media="all">
+@import url( "./style/jbehave-core.css" );
+</style>
+</head>
+<body>
+ 
+<script type="syntaxhighlighter" class="brush: txt"><![CDATA[
+
+(test.story)
+Scenario: without saving
+Examples:
+Given a new env
+When I exec string <input>
+Then I should get result <result>
+
+|input|result|
+|120 + 112.5|232.5|
+|det([{2, 4}, {2, 2}])|-4.0|
+|5 * [{2, 4}, {2, 2}]|[10.0, 20.0] [10.0, 10.0]|
+|[{2, 4}, {2, 2}, {2, 2}]|[2.0, 4.0] [2.0, 2.0] [2.0, 2.0]|
+|[5]|[5]|
+|[5,5,9,9]|[5,5,9,9]|
+
+Example: {input=120 + 112.5, result=232.5}
+Given a new env
+When I exec string 120 + 112.5
+Then I should get result 232.5
+
+Example: {input=det([{2, 4}, {2, 2}]), result=-4.0}
+Given a new env
+When I exec string det([{2, 4}, {2, 2}])
+Then I should get result -4.0
+
+Example: {input=5 * [{2, 4}, {2, 2}], result=[10.0, 20.0] [10.0, 10.0]}
+Given a new env
+When I exec string 5 * [{2, 4}, {2, 2}]
+Then I should get result [10.0, 20.0] [10.0, 10.0] (FAILED)
+(org.junit.ComparisonFailure: expected:<[10.0, 20.0][ ][10.0, 10.0]> but was:<[10.0, 20.0][
+][10.0, 10.0]>)
+
+Example: {input=[{2, 4}, {2, 2}, {2, 2}], result=[2.0, 4.0] [2.0, 2.0] [2.0, 2.0]}
+Given a new env
+When I exec string [{2, 4}, {2, 2}, {2, 2}]
+Then I should get result [2.0, 4.0] [2.0, 2.0] [2.0, 2.0] (FAILED)
+(org.junit.ComparisonFailure: expected:<[2.0, 4.0][ [2.0, 2.0] ][2.0, 2.0]> but was:<[2.0, 4.0][
+[2.0, 2.0]
+][2.0, 2.0]>)
+
+Example: {input=[5], result=[5]}
+Given a new env
+When I exec string [5]
+Then I should get result [5] (FAILED)
+(org.junit.ComparisonFailure: expected:<[5[]]> but was:<[5[.0]]>)
+
+Example: {input=[5,5,9,9], result=[5,5,9,9]}
+Given a new env
+When I exec string [5,5,9,9]
+Then I should get result [5,5,9,9] (FAILED)
+(org.junit.ComparisonFailure: expected:<[5[,5,9,9]]> but was:<[5[.0, 5.0, 9.0, 9.0]]>)
+
+
+Scenario: without saving arr
+Given a new env
+When I exec string [{1, 2}, {2, 1}] + [{1, 2}, {2, 1}]
+Then I should get result
+[2.0, 4.0]
+[4.0, 2.0] (FAILED)
+(org.junit.ComparisonFailure: expected:<[2.0, 4.0][]
+[4.0, 2.0]> but was:<[2.0, 4.0][]
+[4.0, 2.0]>)
+
+Scenario: saving variables
+Examples:
+Given a new env
+When I exec string <input>
+When I exec string <variable>
+Then I should get result <result>
+
+|input|variable|result|
+|k = 100.00 + 112.5|k|212.5|
+|l = [{1, 2}, {2, 1}] + [{1, 2}, {2, 1}]|l|[[2.0, 4.0]  [4.0, 2.0]]|
+|m = det([{2, 4}, {4, 2}])|m|-12.0|
+|n = det([{1, 2}, {2, 1}] * 0.5 + [{1, 2}, {2, 1}] * 2)|n|-18.75|
+|karna = det([{1, 2}, {2, 1}] * 0.5 + [{1, 2}, {2, 1}] * 2)|karna|-18.75|
+
+Example: {input=k = 100.00 + 112.5, variable=k, result=212.5}
+Given a new env
+When I exec string k = 100.00 + 112.5
+When I exec string k
+Then I should get result 212.5
+
+Example: {input=l = [{1, 2}, {2, 1}] + [{1, 2}, {2, 1}], variable=l, result=[[2.0, 4.0]  [4.0, 2.0]]}
+Given a new env
+When I exec string l = [{1, 2}, {2, 1}] + [{1, 2}, {2, 1}]
+When I exec string l
+Then I should get result [[2.0, 4.0]  [4.0, 2.0]] (FAILED)
+(org.junit.ComparisonFailure: expected:<[[[2.0, 4.0]  [4.0, 2.0]]]> but was:<[[2.0, 4.0]
+[4.0, 2.0]]>)
+
+Example: {input=m = det([{2, 4}, {4, 2}]), variable=m, result=-12.0}
+Given a new env
+When I exec string m = det([{2, 4}, {4, 2}])
+When I exec string m
+Then I should get result -12.0
+
+Example: {input=n = det([{1, 2}, {2, 1}] * 0.5 + [{1, 2}, {2, 1}] * 2), variable=n, result=-18.75}
+Given a new env
+When I exec string n = det([{1, 2}, {2, 1}] * 0.5 + [{1, 2}, {2, 1}] * 2)
+When I exec string n
+Then I should get result -18.75
+
+Example: {input=karna = det([{1, 2}, {2, 1}] * 0.5 + [{1, 2}, {2, 1}] * 2), variable=karna, result=-18.75}
+Given a new env
+When I exec string karna = det([{1, 2}, {2, 1}] * 0.5 + [{1, 2}, {2, 1}] * 2)
+When I exec string karna
+Then I should get result -18.75
+
+
+Scenario: saved values
+Examples:
+Given a new env
+When I exec string <input1>
+When I exec string <input2>
+When I exec string <input3>
+Then I should get result <result>
+
+|input1|input2|input3|result|
+|A = 10.00|B = -25|A + B|-15.0|
+|A = [{1, 2}, {2, 1}]|B = [{6, 7}, {2, 5}]|A + B|[[7.0, 9.0]  [4.0, 6.0]]|
+|A = [{1, 2}, {2, 1}]|B = 2|A * B|[[2.0, 4.0]  [4.0, 2.0]]|
+
+Example: {input1=A = 10.00, input2=B = -25, input3=A + B, result=-15.0}
+Given a new env
+When I exec string A = 10.00
+When I exec string B = -25
+When I exec string A + B
+Then I should get result -15.0
+
+Example: {input1=A = [{1, 2}, {2, 1}], input2=B = [{6, 7}, {2, 5}], input3=A + B, result=[[7.0, 9.0]  [4.0, 6.0]]}
+Given a new env
+When I exec string A = [{1, 2}, {2, 1}]
+When I exec string B = [{6, 7}, {2, 5}]
+When I exec string A + B
+Then I should get result [[7.0, 9.0]  [4.0, 6.0]] (FAILED)
+(org.junit.ComparisonFailure: expected:<[[[7.0, 9.0]  [4.0, 6.0]]]> but was:<[[7.0, 9.0]
+[4.0, 6.0]]>)
+
+Example: {input1=A = [{1, 2}, {2, 1}], input2=B = 2, input3=A * B, result=[[2.0, 4.0]  [4.0, 2.0]]}
+Given a new env
+When I exec string A = [{1, 2}, {2, 1}]
+When I exec string B = 2
+When I exec string A * B
+Then I should get result [[2.0, 4.0]  [4.0, 2.0]] (FAILED)
+(org.junit.ComparisonFailure: expected:<[[[2.0, 4.0]  [4.0, 2.0]]]> but was:<[[2.0, 4.0]
+[4.0, 2.0]]>)
+
+
+Scenario: saving expr
+Examples:
+Given a new env
+When I exec string <input1>
+When I exec string <input2>
+When I exec string <input3>
+When I exec string <input4>
+Then I should get result <result>
+
+|input1|input2|input3|input4|result|
+|A = 10.00|B = -25|C = A + B|C|-15.0|
+|A = [{1, 2}, {2, 1}]|B = [{6, 7}, {2, 5}]|C = A + B|C|[[7.0, 9.0]  [4.0, 6.0]]|
+|A = [{1, 2}, {2, 1}]|B = [{6, 7}, {2, 5}]|C = det(A + B)|C|6.0|
+
+Example: {input1=A = 10.00, input2=B = -25, input3=C = A + B, input4=C, result=-15.0}
+Given a new env
+When I exec string A = 10.00
+When I exec string B = -25
+When I exec string C = A + B
+When I exec string C
+Then I should get result -15.0
+
+Example: {input1=A = [{1, 2}, {2, 1}], input2=B = [{6, 7}, {2, 5}], input3=C = A + B, input4=C, result=[[7.0, 9.0]  [4.0, 6.0]]}
+Given a new env
+When I exec string A = [{1, 2}, {2, 1}]
+When I exec string B = [{6, 7}, {2, 5}]
+When I exec string C = A + B
+When I exec string C
+Then I should get result [[7.0, 9.0]  [4.0, 6.0]] (FAILED)
+(org.junit.ComparisonFailure: expected:<[[[7.0, 9.0]  [4.0, 6.0]]]> but was:<[[7.0, 9.0]
+[4.0, 6.0]]>)
+
+Example: {input1=A = [{1, 2}, {2, 1}], input2=B = [{6, 7}, {2, 5}], input3=C = det(A + B), input4=C, result=6.0}
+Given a new env
+When I exec string A = [{1, 2}, {2, 1}]
+When I exec string B = [{6, 7}, {2, 5}]
+When I exec string C = det(A + B)
+When I exec string C
+Then I should get result 6.0
+
+
+Scenario: not set variable
+Examples:
+Given a new env
+When I exec string <input>
+Then I should get result <MSG>
+
+|input|MSG|
+|N|ERROR. Variable 'N' is undefined|
+|det(A)|ERROR. Variable 'A' is undefined|
+|C * W|ERROR. Variable 'C' is undefined|
+
+Example: {input=N, MSG=ERROR. Variable 'N' is undefined}
+Given a new env
+When I exec string N
+Then I should get result ERROR. Variable 'N' is undefined
+
+Example: {input=det(A), MSG=ERROR. Variable 'A' is undefined}
+Given a new env
+When I exec string det(A)
+Then I should get result ERROR. Variable 'A' is undefined
+
+Example: {input=C * W, MSG=ERROR. Variable 'C' is undefined}
+Given a new env
+When I exec string C * W
+Then I should get result ERROR. Variable 'C' is undefined
+
+
+Scenario: invalid operations form
+Examples:
+Given a new env
+When I exec string <input>
+Then I should get result <value>
+
+|input|value|
+|A = 5 +|ERROR. Invalid operation form. It's a binary operation|
+|5 *|ERROR. Invalid operation form. It's a binary operation|
+
+Example: {input=A = 5 +, value=ERROR. Invalid operation form. It's a binary operation}
+Given a new env
+When I exec string A = 5 +
+Then I should get result ERROR. Invalid operation form. It's a binary operation
+
+Example: {input=5 *, value=ERROR. Invalid operation form. It's a binary operation}
+Given a new env
+When I exec string 5 *
+Then I should get result ERROR. Invalid operation form. It's a binary operation
+
+
+Scenario: variables case test
+Examples:
+Given a new env
+When I exec string <input1>
+When I exec string <input2>
+Then I should get result <value>
+
+|input1|input2|value|
+|A = 10.00|a|ERROR. Variable 'a' is undefined|
+|b = [{1, 2}, {2, 1}]|B|ERROR. Variable 'B' is undefined|
+|cab = [{1, 2}, {2, 1}]|cAB|ERROR. Variable 'cAB' is undefined|
+
+Example: {input1=A = 10.00, input2=a, value=ERROR. Variable 'a' is undefined}
+Given a new env
+When I exec string A = 10.00
+When I exec string a
+Then I should get result ERROR. Variable 'a' is undefined
+
+Example: {input1=b = [{1, 2}, {2, 1}], input2=B, value=ERROR. Variable 'B' is undefined}
+Given a new env
+When I exec string b = [{1, 2}, {2, 1}]
+When I exec string B
+Then I should get result ERROR. Variable 'B' is undefined
+
+Example: {input1=cab = [{1, 2}, {2, 1}], input2=cAB, value=ERROR. Variable 'cAB' is undefined}
+Given a new env
+When I exec string cab = [{1, 2}, {2, 1}]
+When I exec string cAB
+Then I should get result ERROR. Variable 'cAB' is undefined
+
+
+
+
+]]></script>
+</body>
+<!--  SyntaxHighlighter resources:  should be included at end of body -->
+<link rel="stylesheet" type="text/css" href="./style/sh-3.0.83/shCore.css"/>
+<link rel="stylesheet" type="text/css" href="./style/sh-3.0.83/shThemeRDark.css"/>
+<script language="javascript" src="./js/sh-3.0.83/shCore.js"></script>
+<script language="javascript" src="./js/sh-3.0.83/shBrushBash.js"></script>
+<script language="javascript" src="./js/sh-3.0.83/shBrushCss.js"></script>
+<script language="javascript" src="./js/sh-3.0.83/shBrushDiff.js"></script>
+<script language="javascript" src="./js/sh-3.0.83/shBrushGroovy.js"></script>
+<script language="javascript" src="./js/sh-3.0.83/shBrushJava.js"></script>
+<script language="javascript" src="./js/sh-3.0.83/shBrushJScript.js"></script>
+<script language="javascript" src="./js/sh-3.0.83/shBrushPlain.js"></script>
+<script language="javascript" src="./js/sh-3.0.83/shBrushPython.js"></script>
+<script language="javascript" src="./js/sh-3.0.83/shBrushRuby.js"></script>
+<script language="javascript" src="./js/sh-3.0.83/shBrushScala.js"></script>
+<script language="javascript" src="./js/sh-3.0.83/shBrushXml.js"></script>
+<script language="javascript" src="./js/shBrushBdd.js"></script>
+<script type="text/javascript">
+    SyntaxHighlighter.defaults['gutter'] = false;
+    SyntaxHighlighter.defaults['toolbar'] = false;    
+    SyntaxHighlighter.all();
+</script>
+</html>

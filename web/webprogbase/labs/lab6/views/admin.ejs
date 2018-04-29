@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Just some cool songs</title>
+    <meta name="description" content="kinda list of some songs">
+    <meta name="author" content="TGIfr aka RuntimeJunky">
+    <link type="text/css" href="/stylesheets/style.css" rel="stylesheet"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+</head>
+<body>
+<% include partials/header %>
+<div class = "content">
+    <div>Users (<%= users.length %>):</div>
+    <ul>
+        <% for (let u of users) { %>
+        <li><%= u.id%> | <%= u.username %> | <%= u.role %></li>
+        <% } %>
+    </ul>
+</div>
+
+</body>
+</html>

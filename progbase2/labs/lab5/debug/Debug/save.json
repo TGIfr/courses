@@ -1,0 +1,62 @@
+[
+  {
+    "age": 827,
+    "name": "Jurasic",
+    "score": 3.125,
+    "friend": 8
+  },
+  {
+    "age": 400,
+    "name": "Night_Fury",
+    "score": 8.3333333333333339,
+    "friend": 2
+  },
+  {
+    "age": 90,
+    "name": "Kvadrat",
+    "score": 5.5555555555555554,
+    "friend": 9
+  },
+  {
+    "age": 67,
+    "name": "Moonshine",
+    "score": 2.5,
+    "friend": 3
+  },
+  {
+    "age": 798,
+    "name": "Kvadrat",
+    "score": 5.0,
+    "friend": 1
+  },
+  {
+    "age": 341,
+    "name": "life",
+    "score": 2.1739130434782608,
+    "friend": 5
+  },
+  {
+    "age": 607,
+    "name": "Night_Fury",
+    "score": 1.1363636363636365,
+    "friend": 8
+  },
+  {
+    "age": 345,
+    "name": "3",
+    "score": 2.6315789473684212,
+    "friend": 2
+  },
+  {
+    "age": 587,
+    "name": "Star",
+    "score": 1.1627906976744187,
+    "friend": 2
+  },
+  {
+    "age": 798,
+    "name": "Jet",
+    "score": 2.7777777777777777,
+    "friend": 5
+  }
+]

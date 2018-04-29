@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Just some cool songs</title>
+    <meta name="description" content="kinda list of some songs">
+    <meta name="author" content="TGIfr aka RuntimeJunky">
+    <link type="text/css" href="/stylesheets/style.css" rel="stylesheet"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+</head>
+<body>
+<% include partials/header %>
+<div class = "search-content">
+    <h1>Login</h1>
+
+    <form action='/login' method='POST'>
+        <label>Username</label><br/>
+        <input name='username' placeholder='user' required minlength="4"><br/>
+        <label>Password</label><br/>
+        <input type='password' name='password' placeholder='pass' required minlength="4"><br/>
+        <input type='submit' value="Login"/>
+    </form>
+</div>
+
+</body>
+</html>

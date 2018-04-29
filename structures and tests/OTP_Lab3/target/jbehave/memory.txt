@@ -1,0 +1,189 @@
+
+(memory.story)
+Scenario: getting variables
+Examples:
+Given an empty env
+When I save variable <var>
+And I get saved variable <varname>
+Then I should get saved variable <result>
+And saved variables numbers should be <num>
+
+|var|varname|result|num|
+|k = 100.00 + 112.5|k|212.5|1|
+|l = [{1, 2}, {2, 1}] + [{1, 2}, {2, 1}]|l|[[2.0, 4.0]  [4.0, 2.0]]|1|
+|m = det([{2, 4}, {4, 2}])|m|-12.0|1|
+|n = det([{1, 2}, {2, 1}] * 0.5 + [{1, 2}, {2, 1}] * 2)|n|-18.75|1|
+|karna = det([{1, 2}, {2, 1}] * 0.5 + [{1, 2}, {2, 1}] * 2)|karna|-18.75|1|
+
+Example: {var=k = 100.00 + 112.5, varname=k, result=212.5, num=1}
+Given an empty env
+When I save variable k = 100.00 + 112.5
+And I get saved variable k
+Then I should get saved variable 212.5
+And saved variables numbers should be 1
+
+Example: {var=l = [{1, 2}, {2, 1}] + [{1, 2}, {2, 1}], varname=l, result=[[2.0, 4.0]  [4.0, 2.0]], num=1}
+Given an empty env
+When I save variable l = [{1, 2}, {2, 1}] + [{1, 2}, {2, 1}]
+And I get saved variable l
+Then I should get saved variable [[2.0, 4.0]  [4.0, 2.0]] (FAILED)
+(org.junit.ComparisonFailure: expected:<[[[2.0, 4.0]  [4.0, 2.0]]]> but was:<[[2.0, 4.0]
+[4.0, 2.0]]>)
+And saved variables numbers should be 1 (NOT PERFORMED)
+
+Example: {var=m = det([{2, 4}, {4, 2}]), varname=m, result=-12.0, num=1}
+Given an empty env
+When I save variable m = det([{2, 4}, {4, 2}])
+And I get saved variable m
+Then I should get saved variable -12.0
+And saved variables numbers should be 1
+
+Example: {var=n = det([{1, 2}, {2, 1}] * 0.5 + [{1, 2}, {2, 1}] * 2), varname=n, result=-18.75, num=1}
+Given an empty env
+When I save variable n = det([{1, 2}, {2, 1}] * 0.5 + [{1, 2}, {2, 1}] * 2)
+And I get saved variable n
+Then I should get saved variable -18.75
+And saved variables numbers should be 1
+
+Example: {var=karna = det([{1, 2}, {2, 1}] * 0.5 + [{1, 2}, {2, 1}] * 2), varname=karna, result=-18.75, num=1}
+Given an empty env
+When I save variable karna = det([{1, 2}, {2, 1}] * 0.5 + [{1, 2}, {2, 1}] * 2)
+And I get saved variable karna
+Then I should get saved variable -18.75
+And saved variables numbers should be 1
+
+
+Scenario: saving variables
+Examples:
+Given an empty env
+When I save variable <var>
+Then I should get output <result>
+And saved variables numbers should be <num>
+
+|var|result|num|
+|k = 100.00 + 112.5|212.5|1|
+|l = [{1, 2}, {2, 1}] + [{1, 2}, {2, 1}]|[[2.0, 4.0]  [4.0, 2.0]]|1|
+|m = det([{2, 4}, {4, 2}])|-12.0|1|
+|n = det([{1, 2}, {2, 1}] * 0.5 + [{1, 2}, {2, 1}] * 2)|-18.75|1|
+|karna = det([{1, 2}, {2, 1}] * 0.5 + [{1, 2}, {2, 1}] * 2)|-18.75|1|
+
+Example: {var=k = 100.00 + 112.5, result=212.5, num=1}
+Given an empty env
+When I save variable k = 100.00 + 112.5
+Then I should get output 212.5
+And saved variables numbers should be 1
+
+Example: {var=l = [{1, 2}, {2, 1}] + [{1, 2}, {2, 1}], result=[[2.0, 4.0]  [4.0, 2.0]], num=1}
+Given an empty env
+When I save variable l = [{1, 2}, {2, 1}] + [{1, 2}, {2, 1}]
+Then I should get output [[2.0, 4.0]  [4.0, 2.0]] (FAILED)
+(org.junit.ComparisonFailure: expected:<[[[2.0, 4.0]  [4.0, 2.0]]]> but was:<[[2.0, 4.0]
+[4.0, 2.0]]>)
+And saved variables numbers should be 1 (NOT PERFORMED)
+
+Example: {var=m = det([{2, 4}, {4, 2}]), result=-12.0, num=1}
+Given an empty env
+When I save variable m = det([{2, 4}, {4, 2}])
+Then I should get output -12.0
+And saved variables numbers should be 1
+
+Example: {var=n = det([{1, 2}, {2, 1}] * 0.5 + [{1, 2}, {2, 1}] * 2), result=-18.75, num=1}
+Given an empty env
+When I save variable n = det([{1, 2}, {2, 1}] * 0.5 + [{1, 2}, {2, 1}] * 2)
+Then I should get output -18.75
+And saved variables numbers should be 1
+
+Example: {var=karna = det([{1, 2}, {2, 1}] * 0.5 + [{1, 2}, {2, 1}] * 2), result=-18.75, num=1}
+Given an empty env
+When I save variable karna = det([{1, 2}, {2, 1}] * 0.5 + [{1, 2}, {2, 1}] * 2)
+Then I should get output -18.75
+And saved variables numbers should be 1
+
+
+Scenario: getting variables from empty env
+Examples:
+Given an empty env
+When I enter invalid operation <notSetVariable>
+Then I should get result <MSG>
+
+|notSetVariable|MSG|
+|N|ERROR. Variable 'N' is undefined|
+|det(A)|ERROR. Variable 'A' is undefined|
+|C * W|ERROR. Variable 'C' is undefined|
+
+Example: {notSetVariable=N, MSG=ERROR. Variable 'N' is undefined}
+Given an empty env
+When I enter invalid operation N
+Then I should get result ERROR. Variable 'N' is undefined
+
+Example: {notSetVariable=det(A), MSG=ERROR. Variable 'A' is undefined}
+Given an empty env
+When I enter invalid operation det(A)
+Then I should get result ERROR. Variable 'A' is undefined
+
+Example: {notSetVariable=C * W, MSG=ERROR. Variable 'C' is undefined}
+Given an empty env
+When I enter invalid operation C * W
+Then I should get result ERROR. Variable 'C' is undefined
+
+
+Scenario: setting already existing variable
+Examples:
+Given an empty env
+When I save variable <var>
+And I save variable <sameNameVar>
+And I get saved variable <varname>
+Then I should get saved variable <result>
+And saved variables numbers should be <num>
+
+|var|sameNameVar|varname|result|num|
+|k = 100.00 + 112.5|k = 5|k|5.0|1|
+|l = [{1, 2}, {2, 1}] + [{1, 2}, {2, 1}]|l = 100.00 + 112.5|l|212.5|1|
+|m = det([{2, 4}, {4, 2}])|m = [{2, 4}, {4, 2}]|m|[{2, 4}, {4, 2}]|1|
+|n = det([{1, 2}, {2, 1}] * 0.5 + [{1, 2}, {2, 1}] * 2)|n = 100.00 + 112.5|n|212.5|1|
+|karna = det([{1, 2}, {2, 1}] * 0.5 + [{1, 2}, {2, 1}] * 2)|karna = det([{2, 4}, {4, 2}])|karna|-12.0|1|
+
+Example: {var=k = 100.00 + 112.5, sameNameVar=k = 5, varname=k, result=5.0, num=1}
+Given an empty env
+When I save variable k = 100.00 + 112.5
+And I save variable k = 5
+And I get saved variable k
+Then I should get saved variable 5.0
+And saved variables numbers should be 1
+
+Example: {var=l = [{1, 2}, {2, 1}] + [{1, 2}, {2, 1}], sameNameVar=l = 100.00 + 112.5, varname=l, result=212.5, num=1}
+Given an empty env
+When I save variable l = [{1, 2}, {2, 1}] + [{1, 2}, {2, 1}]
+And I save variable l = 100.00 + 112.5
+And I get saved variable l
+Then I should get saved variable 212.5
+And saved variables numbers should be 1
+
+Example: {var=m = det([{2, 4}, {4, 2}]), sameNameVar=m = [{2, 4}, {4, 2}], varname=m, result=[{2, 4}, {4, 2}], num=1}
+Given an empty env
+When I save variable m = det([{2, 4}, {4, 2}])
+And I save variable m = [{2, 4}, {4, 2}]
+And I get saved variable m
+Then I should get saved variable [{2, 4}, {4, 2}] (FAILED)
+(org.junit.ComparisonFailure: expected:<[[{2, 4}, {4, 2}]]> but was:<[[2.0, 4.0]
+[4.0, 2.0]]>)
+And saved variables numbers should be 1 (NOT PERFORMED)
+
+Example: {var=n = det([{1, 2}, {2, 1}] * 0.5 + [{1, 2}, {2, 1}] * 2), sameNameVar=n = 100.00 + 112.5, varname=n, result=212.5, num=1}
+Given an empty env
+When I save variable n = det([{1, 2}, {2, 1}] * 0.5 + [{1, 2}, {2, 1}] * 2)
+And I save variable n = 100.00 + 112.5
+And I get saved variable n
+Then I should get saved variable 212.5
+And saved variables numbers should be 1
+
+Example: {var=karna = det([{1, 2}, {2, 1}] * 0.5 + [{1, 2}, {2, 1}] * 2), sameNameVar=karna = det([{2, 4}, {4, 2}]), varname=karna, result=-12.0, num=1}
+Given an empty env
+When I save variable karna = det([{1, 2}, {2, 1}] * 0.5 + [{1, 2}, {2, 1}] * 2)
+And I save variable karna = det([{2, 4}, {4, 2}])
+And I get saved variable karna
+Then I should get saved variable -12.0
+And saved variables numbers should be 1
+
+
+

@@ -1,0 +1,263 @@
+<html>
+<head>
+<title>expressions</title>
+<style type="text/css" media="all">
+@import url( "./style/jbehave-core.css" );
+</style>
+</head>
+<body>
+ 
+<script type="syntaxhighlighter" class="brush: txt"><![CDATA[
+
+(expressions.story)
+Scenario: without saving
+Examples:
+Given an empty env
+When I enter expression with no variables without saving  <expr>
+Then I should get output <result>
+
+|expr|result|
+|120 + 112.5|232.5|
+|det([{2, 4}, {2, 2}])|-4.0|
+|5 * [{2, 4}, {2, 2}]|[10.0, 20.0] [10.0, 10.0]|
+|[{2, 4}, {2, 2}, {2, 2}]|[2.0, 4.0] [2.0, 2.0] [2.0, 2.0]|
+|[5]|[5.0]|
+|[5,5,9,9]|[5.0,5.0,9.0,9.0]|
+
+Example: {expr=120 + 112.5, result=232.5}
+Given an empty env
+When I enter expression with no variables without saving  120 + 112.5
+Then I should get output 232.5
+
+Example: {expr=det([{2, 4}, {2, 2}]), result=-4.0}
+Given an empty env
+When I enter expression with no variables without saving  det([{2, 4}, {2, 2}])
+Then I should get output -4.0
+
+Example: {expr=5 * [{2, 4}, {2, 2}], result=[10.0, 20.0] [10.0, 10.0]}
+Given an empty env
+When I enter expression with no variables without saving  5 * [{2, 4}, {2, 2}]
+Then I should get output [10.0, 20.0] [10.0, 10.0] (FAILED)
+(org.junit.ComparisonFailure: expected:<[10.0, 20.0][ ][10.0, 10.0]> but was:<[10.0, 20.0][
+][10.0, 10.0]>)
+
+Example: {expr=[{2, 4}, {2, 2}, {2, 2}], result=[2.0, 4.0] [2.0, 2.0] [2.0, 2.0]}
+Given an empty env
+When I enter expression with no variables without saving  [{2, 4}, {2, 2}, {2, 2}]
+Then I should get output [2.0, 4.0] [2.0, 2.0] [2.0, 2.0] (FAILED)
+(org.junit.ComparisonFailure: expected:<[2.0, 4.0][ [2.0, 2.0] ][2.0, 2.0]> but was:<[2.0, 4.0][
+[2.0, 2.0]
+][2.0, 2.0]>)
+
+Example: {expr=[5], result=[5.0]}
+Given an empty env
+When I enter expression with no variables without saving  [5]
+Then I should get output [5.0]
+
+Example: {expr=[5,5,9,9], result=[5.0,5.0,9.0,9.0]}
+Given an empty env
+When I enter expression with no variables without saving  [5,5,9,9]
+Then I should get output [5.0,5.0,9.0,9.0] (FAILED)
+(org.junit.ComparisonFailure: expected:<[5.0,[5.0,9.0,]9.0]> but was:<[5.0,[ 5.0, 9.0, ]9.0]>)
+
+
+Scenario: expression without saving arr
+Given an empty env
+When I enter matrix [{1, 2}, {2, 1}] + [{1, 2}, {2, 1}]
+Then I should get output
+[2.0, 4.0]
+[4.0, 2.0] (FAILED)
+(org.junit.ComparisonFailure: expected:<[2.0, 4.0][]
+[4.0, 2.0]> but was:<[2.0, 4.0][]
+[4.0, 2.0]>)
+
+Scenario: using saved variables
+Examples:
+Given an empty env
+When I save variable <A>
+And I save variable <B>
+And I enter expression with saved variables A and B  with no saving <expr>
+Then I should get output <result>
+
+|A|B|expr|result|
+|A = 10.00|B = -25|A + B|-15.0|
+|A = 10.00  + 5|B = -25|A + B|-10.0|
+|A = [{1, 2}, {2, 1}]|B = [{6, 7}, {2, 5}]|A + B|[[7.0, 9.0]  [4.0, 6.0]]|
+|A = [{1, 2}, {2, 1}]|B = 2|A * B|[[2.0, 4.0]  [4.0, 2.0]]|
+
+Example: {A=A = 10.00, B=B = -25, expr=A + B, result=-15.0}
+Given an empty env
+When I save variable A = 10.00
+And I save variable B = -25
+And I enter expression with saved variables A and B  with no saving A + B
+Then I should get output -15.0
+
+Example: {A=A = 10.00  + 5, B=B = -25, expr=A + B, result=-10.0}
+Given an empty env
+When I save variable A = 10.00  + 5
+And I save variable B = -25
+And I enter expression with saved variables A and B  with no saving A + B
+Then I should get output -10.0
+
+Example: {A=A = [{1, 2}, {2, 1}], B=B = [{6, 7}, {2, 5}], expr=A + B, result=[[7.0, 9.0]  [4.0, 6.0]]}
+Given an empty env
+When I save variable A = [{1, 2}, {2, 1}]
+And I save variable B = [{6, 7}, {2, 5}]
+And I enter expression with saved variables A and B  with no saving A + B
+Then I should get output [[7.0, 9.0]  [4.0, 6.0]] (FAILED)
+(org.junit.ComparisonFailure: expected:<[[[7.0, 9.0]  [4.0, 6.0]]]> but was:<[[7.0, 9.0]
+[4.0, 6.0]]>)
+
+Example: {A=A = [{1, 2}, {2, 1}], B=B = 2, expr=A * B, result=[[2.0, 4.0]  [4.0, 2.0]]}
+Given an empty env
+When I save variable A = [{1, 2}, {2, 1}]
+And I save variable B = 2
+And I enter expression with saved variables A and B  with no saving A * B
+Then I should get output [[2.0, 4.0]  [4.0, 2.0]] (FAILED)
+(org.junit.ComparisonFailure: expected:<[[[2.0, 4.0]  [4.0, 2.0]]]> but was:<[[2.0, 4.0]
+[4.0, 2.0]]>)
+
+
+Scenario: using saved variables and saving them
+Examples:
+Given an empty env
+When I save variable A <input1>
+And I save variable  B <input2>
+And I enter expression with saved variables A and B and save it in C  <input3>
+And I get saved variable <var>
+Then I should get output <result>
+
+|input1|input2|input3|var|result|
+|A = 10.00|B = -25|C = A + B|C|-15.0|
+|A = [{1, 2}, {2, 1}]|B = [{6, 7}, {2, 5}]|C = A + B|C|[[7.0, 9.0]  [4.0, 6.0]]|
+|A = [{1, 2}, {2, 1}]|B = [{6, 7}, {2, 5}]|C = det(A + B)|C|6.0|
+
+Example: {input1=A = 10.00, input2=B = -25, input3=C = A + B, var=C, result=-15.0}
+Given an empty env
+When I save variable A A = 10.00
+And I save variable  B B = -25
+And I enter expression with saved variables A and B and save it in C  C = A + B
+And I get saved variable C
+Then I should get output -15.0 (FAILED)
+(org.junit.ComparisonFailure: expected:<[-15.0]> but was:<[ERROR. Variable 'C' is undefined]>)
+
+Example: {input1=A = [{1, 2}, {2, 1}], input2=B = [{6, 7}, {2, 5}], input3=C = A + B, var=C, result=[[7.0, 9.0]  [4.0, 6.0]]}
+Given an empty env
+When I save variable A A = [{1, 2}, {2, 1}]
+And I save variable  B B = [{6, 7}, {2, 5}]
+And I enter expression with saved variables A and B and save it in C  C = A + B
+And I get saved variable C
+Then I should get output [[7.0, 9.0]  [4.0, 6.0]] (FAILED)
+(org.junit.ComparisonFailure: expected:<[[[7.0, 9.0]  [4.0, 6.0]]]> but was:<[ERROR. Variable 'C' is undefined]>)
+
+Example: {input1=A = [{1, 2}, {2, 1}], input2=B = [{6, 7}, {2, 5}], input3=C = det(A + B), var=C, result=6.0}
+Given an empty env
+When I save variable A A = [{1, 2}, {2, 1}]
+And I save variable  B B = [{6, 7}, {2, 5}]
+And I enter expression with saved variables A and B and save it in C  C = det(A + B)
+And I get saved variable C
+Then I should get output 6.0 (FAILED)
+(org.junit.ComparisonFailure: expected:<[6.0]> but was:<[ERROR. Variable 'C' is undefined]>)
+
+
+Scenario: invalid operations form
+Examples:
+Given an empty env
+When I enter invalid operation <input>
+Then I should get err <value>
+
+|input|value|
+|A = 5 +|ERROR. Invalid operation form. It's a binary operation|
+|5 *|ERROR. Invalid operation form. It's a binary operation|
+
+Example: {input=A = 5 +, value=ERROR. Invalid operation form. It's a binary operation}
+Given an empty env
+When I enter invalid operation A = 5 +
+Then I should get err ERROR. Invalid operation form. It's a binary operation
+
+Example: {input=5 *, value=ERROR. Invalid operation form. It's a binary operation}
+Given an empty env
+When I enter invalid operation 5 *
+Then I should get err ERROR. Invalid operation form. It's a binary operation
+
+
+Scenario: variables names case
+Examples:
+Given an empty env
+When I save variable <input1>
+And I get not saved var <var>
+Then I should get err <value>
+
+|input1|var|value|
+|A = 10.00|a|ERROR. Variable 'a' is undefined|
+|b = [{1, 2}, {2, 1}]|B|ERROR. Variable 'B' is undefined|
+|cab = [{1, 2}, {2, 1}]|cAB|ERROR. Variable 'cAB' is undefined|
+
+Example: {input1=A = 10.00, var=a, value=ERROR. Variable 'a' is undefined}
+Given an empty env
+When I save variable A = 10.00
+And I get not saved var a
+Then I should get err ERROR. Variable 'a' is undefined
+
+Example: {input1=b = [{1, 2}, {2, 1}], var=B, value=ERROR. Variable 'B' is undefined}
+Given an empty env
+When I save variable b = [{1, 2}, {2, 1}]
+And I get not saved var B
+Then I should get err ERROR. Variable 'B' is undefined
+
+Example: {input1=cab = [{1, 2}, {2, 1}], var=cAB, value=ERROR. Variable 'cAB' is undefined}
+Given an empty env
+When I save variable cab = [{1, 2}, {2, 1}]
+And I get not saved var cAB
+Then I should get err ERROR. Variable 'cAB' is undefined
+
+
+Scenario: matrix mult is not available
+Examples:
+Given an empty env
+When I enter not available operation  <input>
+Then I should get an error message <message>
+
+|input|message|
+|[{2, 4}, {2, 2}]  * [{2, 4}, {2, 2}]|Multiplication of matrix is not available|
+|det(5.5)|Cannot calculate determinant of not a matrix variable|
+
+Example: {input=[{2, 4}, {2, 2}]  * [{2, 4}, {2, 2}], message=Multiplication of matrix is not available}
+Given an empty env
+When I enter not available operation  [{2, 4}, {2, 2}]  * [{2, 4}, {2, 2}]
+Then I should get an error message Multiplication of matrix is not available (FAILED)
+(java.lang.NullPointerException)
+
+Example: {input=det(5.5), message=Cannot calculate determinant of not a matrix variable}
+Given an empty env
+When I enter not available operation  det(5.5)
+Then I should get an error message Cannot calculate determinant of not a matrix variable (FAILED)
+(java.lang.NullPointerException)
+
+
+
+
+]]></script>
+</body>
+<!--  SyntaxHighlighter resources:  should be included at end of body -->
+<link rel="stylesheet" type="text/css" href="./style/sh-3.0.83/shCore.css"/>
+<link rel="stylesheet" type="text/css" href="./style/sh-3.0.83/shThemeRDark.css"/>
+<script language="javascript" src="./js/sh-3.0.83/shCore.js"></script>
+<script language="javascript" src="./js/sh-3.0.83/shBrushBash.js"></script>
+<script language="javascript" src="./js/sh-3.0.83/shBrushCss.js"></script>
+<script language="javascript" src="./js/sh-3.0.83/shBrushDiff.js"></script>
+<script language="javascript" src="./js/sh-3.0.83/shBrushGroovy.js"></script>
+<script language="javascript" src="./js/sh-3.0.83/shBrushJava.js"></script>
+<script language="javascript" src="./js/sh-3.0.83/shBrushJScript.js"></script>
+<script language="javascript" src="./js/sh-3.0.83/shBrushPlain.js"></script>
+<script language="javascript" src="./js/sh-3.0.83/shBrushPython.js"></script>
+<script language="javascript" src="./js/sh-3.0.83/shBrushRuby.js"></script>
+<script language="javascript" src="./js/sh-3.0.83/shBrushScala.js"></script>
+<script language="javascript" src="./js/sh-3.0.83/shBrushXml.js"></script>
+<script language="javascript" src="./js/shBrushBdd.js"></script>
+<script type="text/javascript">
+    SyntaxHighlighter.defaults['gutter'] = false;
+    SyntaxHighlighter.defaults['toolbar'] = false;    
+    SyntaxHighlighter.all();
+</script>
+</html>

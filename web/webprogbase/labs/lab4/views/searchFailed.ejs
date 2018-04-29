@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>List of cool songs</title>
+    <meta name="description" content="kinda list of some songs">
+    <meta name="author" content="TGIfr aka RuntimeJunky">
+    <link type="text/css" href="/stylesheets/style.css" rel="stylesheet"/>
+</head>
+<body>
+<div class="song-content">
+    <h1>The list</h1>
+    <form action="/search/1" method="get" >
+        <input type="text" name="name"  value = "<%= search%>">
+        <input type="submit" value="Find">
+    </form>
+    <br>
+    <h1>Such songs not found</h1>
+    <p>But here is a cat for you</p>
+    <img src="http://thecatapi.com/api/images/get">
+</div>
+
+
+
+
+<a href="/">Go back</a>
+
+
+</body>
+</html>

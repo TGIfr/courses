@@ -1,0 +1,12 @@
+D:\my projects\c#\OOP_Lab2\OOP_Lab2\bin\Debug\OOP_Lab2.exe.config
+D:\my projects\c#\OOP_Lab2\OOP_Lab2\bin\Debug\OOP_Lab2.exe
+D:\my projects\c#\OOP_Lab2\OOP_Lab2\bin\Debug\OOP_Lab2.pdb
+D:\my projects\c#\OOP_Lab2\OOP_Lab2\obj\Debug\OOP_Lab2.exe
+D:\my projects\c#\OOP_Lab2\OOP_Lab2\obj\Debug\OOP_Lab2.pdb
+D:\my projects\c#\OOP_Lab2\OOP_Lab2\obj\Debug\OOP_Lab2.csprojResolveAssemblyReference.cache
+D:\my projects\c#\OOP_Lab3\OOP_Lab2\bin\Debug\OOP_Lab2.exe.config
+D:\my projects\c#\OOP_Lab3\OOP_Lab2\obj\Debug\OOP_Lab2.exe
+D:\my projects\c#\OOP_Lab3\OOP_Lab2\obj\Debug\OOP_Lab2.pdb
+D:\my projects\c#\OOP_Lab3\OOP_Lab2\bin\Debug\OOP_Lab2.exe
+D:\my projects\c#\OOP_Lab3\OOP_Lab2\bin\Debug\OOP_Lab2.pdb
+D:\my projects\c#\OOP_Lab3\OOP_Lab2\obj\Debug\OOP_Lab2.csprojResolveAssemblyReference.cache

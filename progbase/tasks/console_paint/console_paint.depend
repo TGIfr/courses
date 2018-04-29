@@ -1,0 +1,7 @@
+# depslib dependency file v1.0
+1475258671 source:/home/tgifr/projects/c/progbase/tasks/console_paint/main.c
+	<stdio.h>
+	<stdlib.h>
+	<progbase.h>
+	<pbconsole.h>
+

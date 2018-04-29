@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Just some cool songs</title>
+    <meta name="description" content="<%= user.username%>">
+    <meta name="author" content="TGIfr aka RuntimeJunky">
+    <link type="text/css" href="/stylesheets/style.css" rel="stylesheet"/>
+    <link rel='stylesheet prefetch' href='https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css'>
+</head>
+<body>
+<div class="container clearfix" style="width: 500px;">
+    <div class="controls" style="border: none; width: 100%;">
+        <a href="/logout" class="logout-btn" style="width: auto; padding: 13px; font-size: 12px;">Logout</a>
+    </div>
+    <div class="room-create clearfix" style="border-bottom: 2px solid white;">
+        <img src="<%= user.picture%> "style="width:25%; height:25%;">
+        <form action="/changeAvatar" class="login-form" method="post" enctype="multipart/form-data" >
+            <input type="file" name="image" placeholder="image">
+            <input type="hidden" name="id" value="<%= user.id%>">
+            <button type="submit">Change avatar</button>
+        </form>
+        <h3><%= user.username%></h3>
+        <div>
+            <p>Stats</p>
+            <div>
+                Games total: <%= user.totalGames%>
+            </div>
+            <div>
+                Games won: <%= user.wonGames%>
+            </div>
+            <% if(user.totalGames !== 0) {%>
+            <div>
+                Winrate: <%= user.wonGames/user.totalGames %>
+            </div>
+            <% }%>
+        </div>
+
+    </div> <!-- end room-create -->
+
+    <div class="controls" style="border: none; width: 100%;">
+        <a href="/" class="controls rooms-btn"
+           style="padding: 12px; float: left; width: auto;" >Back</a>
+        <a href="/contacts" class="controls rooms-btn"
+           style="padding: 12px; float: left; width: auto;" >Contacts</a>
+    </div>
+
+
+</div> <!-- end container -->
+
+</body>
+</html>

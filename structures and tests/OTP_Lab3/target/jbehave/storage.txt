@@ -1,0 +1,198 @@
+
+(storage.story)
+Scenario: Entering and saving a variable
+Examples:
+Given a new env
+When I exec string <input>
+Then I should get result <result>
+Then should be created var <varname> with value <result>
+
+|input|varname|result|
+|A = 100|A|100.00|
+|B = [0.32, -1.2, 32]|B|[0.32, -1.20, 32.00]|
+|C = [[-10.32, 0], [1.2, 32]]|C|[[-10.32, 0.00], [1.20, 32.00]]|
+
+Example: {input=A = 100, varname=A, result=100.00}
+Given a new env
+When I exec string A = 100
+Then I should get result 100.00 (FAILED)
+(org.junit.ComparisonFailure: expected:<100.0[0]> but was:<100.0[]>)
+Then should be created var A with value 100.00 (NOT PERFORMED)
+
+Example: {input=B = [0.32, -1.2, 32], varname=B, result=[0.32, -1.20, 32.00]}
+Given a new env
+When I exec string B = [0.32, -1.2, 32]
+Then I should get result [0.32, -1.20, 32.00] (FAILED)
+(org.junit.ComparisonFailure: expected:<[[0.32, -1.20, 32.0]0]> but was:<[
+[0.32, -1.2, 32.]0]>)
+Then should be created var B with value [0.32, -1.20, 32.00] (NOT PERFORMED)
+
+Example: {input=C = [[-10.32, 0], [1.2, 32]], varname=C, result=[[-10.32, 0.00], [1.20, 32.00]]}
+Given a new env
+When I exec string C = [[-10.32, 0], [1.2, 32]]
+Then I should get result [[-10.32, 0.00], [1.20, 32.00]] (FAILED)
+(org.junit.ComparisonFailure: expected:<[[[-10.32, 0.00], [1.20, 32.00]]]> but was:<[ERROR. Matrix definition includes unauthorized types: Matrix]>)
+Then should be created var C with value [[-10.32, 0.00], [1.20, 32.00]] (NOT PERFORMED)
+
+
+Scenario: Entering a variable with invalid value
+Examples:
+Given a new env
+When I exec string <input>
+Then I should get an error message invalid input
+
+|input|
+|A = 1dasdsa|
+|B = [0.32, -1.2, 32]]|
+|C = [[-10.32, 0], [1.2, 32]|
+
+Example: {input=A = 1dasdsa}
+Given a new env
+When I exec string A = 1dasdsa
+Then I should get an error message invalid input (FAILED)
+(java.lang.NullPointerException)
+
+Example: {input=B = [0.32, -1.2, 32]]}
+Given a new env
+When I exec string B = [0.32, -1.2, 32]]
+Then I should get an error message invalid input (FAILED)
+(java.lang.NullPointerException)
+
+Example: {input=C = [[-10.32, 0], [1.2, 32]}
+Given a new env
+When I exec string C = [[-10.32, 0], [1.2, 32]
+Then I should get an error message invalid input (FAILED)
+(java.lang.NullPointerException)
+
+
+Scenario: Entering a variable with invalid name
+Examples:
+Given a new env
+When I exec string <input>
+Then I should get an error message invalid input
+
+|input|
+|21A = 1|
+|#21 = [0.32, -1.2, 32]|
+|$e2 = [[-10.32, 0], [1.2, 32]]|
+
+Example: {input=21A = 1}
+Given a new env
+When I exec string 21A = 1
+Then I should get an error message invalid input (FAILED)
+(java.lang.NullPointerException)
+
+Example: {input=#21 = [0.32, -1.2, 32]}
+Given a new env
+When I exec string #21 = [0.32, -1.2, 32]
+Then I should get an error message invalid input (FAILED)
+(java.lang.NullPointerException)
+
+Example: {input=$e2 = [[-10.32, 0], [1.2, 32]]}
+Given a new env
+When I exec string $e2 = [[-10.32, 0], [1.2, 32]]
+Then I should get an error message invalid input (FAILED)
+(java.lang.NullPointerException)
+
+
+Scenario: Querying a variable that is not saved
+Examples:
+Given a new env
+When I exec string <input>
+Then I should get an error message no such variable
+
+|input|
+|A|
+|B|
+|C|
+
+Example: {input=A}
+Given a new env
+When I exec string A
+Then I should get an error message no such variable (FAILED)
+(java.lang.NullPointerException)
+
+Example: {input=B}
+Given a new env
+When I exec string B
+Then I should get an error message no such variable (FAILED)
+(java.lang.NullPointerException)
+
+Example: {input=C}
+Given a new env
+When I exec string C
+Then I should get an error message no such variable (FAILED)
+(java.lang.NullPointerException)
+
+
+Scenario: Overriding variable
+Examples:
+Given a new env
+When I exec string <input>
+Then I should get result <result>
+Then should be created var <varname> with value <result>
+
+|varname|value|input|result|
+|A|-10.32|A = [1111, 0.32, 1222]|[1111.00, 0.32, 1222.00]|
+|B|[-10.32, 1.2, 32]|B = 1002|1002.00|
+|C|[[-10.32, 0], [1.2, 32]]|C = [[111, 5], [1.2, -3]]|[[111.00, 5.00], [1.20, -3.00]]|
+
+Example: {varname=A, value=-10.32, input=A = [1111, 0.32, 1222], result=[1111.00, 0.32, 1222.00]}
+Given a new env
+When I exec string A = [1111, 0.32, 1222]
+Then I should get result [1111.00, 0.32, 1222.00] (FAILED)
+(org.junit.ComparisonFailure: expected:<[[1111.00, 0.32, 1222.0]0]> but was:<[
+[1111.0, 0.32, 1222.]0]>)
+Then should be created var A with value [1111.00, 0.32, 1222.00] (NOT PERFORMED)
+
+Example: {varname=B, value=[-10.32, 1.2, 32], input=B = 1002, result=1002.00}
+Given a new env
+When I exec string B = 1002
+Then I should get result 1002.00 (FAILED)
+(org.junit.ComparisonFailure: expected:<1002.0[0]> but was:<1002.0[]>)
+Then should be created var B with value 1002.00 (NOT PERFORMED)
+
+Example: {varname=C, value=[[-10.32, 0], [1.2, 32]], input=C = [[111, 5], [1.2, -3]], result=[[111.00, 5.00], [1.20, -3.00]]}
+Given a new env
+When I exec string C = [[111, 5], [1.2, -3]]
+Then I should get result [[111.00, 5.00], [1.20, -3.00]] (FAILED)
+(org.junit.ComparisonFailure: expected:<[[[111.00, 5.00], [1.20, -3.00]]]> but was:<[ERROR. Matrix definition includes unauthorized types: Matrix]>)
+Then should be created var C with value [[111.00, 5.00], [1.20, -3.00]] (NOT PERFORMED)
+
+
+Scenario: Saving an expression
+Examples:
+Given a new env
+When I exec string <input>
+Then I should get result <result>
+Then should be created var <varname> with value <result>
+
+|input|varname|result|
+|A = 10 + 42 + 20|A|72.00|
+|B = [0.23, 1.12, 32] + [-0.21, 1.2, 20]|B|[0.02, 2.32, 52.00]|
+|C = [[-10, 0], [14, 1]] + [[5, 0], [2.2, 1]]|C|[[-5.00, 0.00], [16.20, 2.00]]|
+
+Example: {input=A = 10 + 42 + 20, varname=A, result=72.00}
+Given a new env
+When I exec string A = 10 + 42 + 20
+Then I should get result 72.00 (FAILED)
+(org.junit.ComparisonFailure: expected:<72.0[0]> but was:<72.0[]>)
+Then should be created var A with value 72.00 (NOT PERFORMED)
+
+Example: {input=B = [0.23, 1.12, 32] + [-0.21, 1.2, 20], varname=B, result=[0.02, 2.32, 52.00]}
+Given a new env
+When I exec string B = [0.23, 1.12, 32] + [-0.21, 1.2, 20]
+Then I should get result [0.02, 2.32, 52.00] (FAILED)
+(org.junit.ComparisonFailure: expected:<[[0.02, 2.32, 52.0]0]> but was:<[
+[0.020000000000000018, 2.3200000000000003, 52.]0]>)
+Then should be created var B with value [0.02, 2.32, 52.00] (NOT PERFORMED)
+
+Example: {input=C = [[-10, 0], [14, 1]] + [[5, 0], [2.2, 1]], varname=C, result=[[-5.00, 0.00], [16.20, 2.00]]}
+Given a new env
+When I exec string C = [[-10, 0], [14, 1]] + [[5, 0], [2.2, 1]]
+Then I should get result [[-5.00, 0.00], [16.20, 2.00]] (FAILED)
+(org.junit.ComparisonFailure: expected:<[[[-5.00, 0.00], [16.20, 2.00]]]> but was:<[ERROR. Matrix definition includes unauthorized types: Matrix]>)
+Then should be created var C with value [[-5.00, 0.00], [16.20, 2.00]] (NOT PERFORMED)
+
+
+
